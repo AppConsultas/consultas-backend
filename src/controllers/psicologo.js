@@ -211,7 +211,7 @@ export const download = async (req, res) => {
     },
   ];
   const data = await buscarPorPais(pais);
-
-  return downloadResource(res, 'psicologoPais.csv', fields, data);
+  var nompais='psicologos'+pais+'.csv';
+  return downloadResource(res, nompais, fields, data);
 
 }
