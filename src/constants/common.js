@@ -1,14 +1,20 @@
+
+
 export const baseRoute = "/api/v1";
 
 export const routes = {
-  usuarioRaiz: `${baseRoute}/usuarios`,
-  usuario: {
-    consulta: "/:id/consultas",
-    infoPersonal: "/:id/infopersonal"  
+  psicologoRaiz: `${baseRoute}/psicologos`,
+  psicologo: {
+    tratamiento: "/:psicologo/tratamientos"
   },
-  doctorRaiz: `${baseRoute}/doctores`,
-  doctor: {
-    datosConsulta: "/:id/datosConsultas"
+  tratamiento: `${baseRoute}/tratamientos`,
+  pacienteRaiz: `${baseRoute}/pacientes`,
+  paciente: {
+    cita: "/:paciente/citas"
   },
-  especialidad: `${baseRoute}/especialidades`
+  cita: `${baseRoute}/citas`,
+  auth: `${baseRoute}/auth`,
+  contactanos: `${baseRoute}/contactanos`,
+  paises: `${baseRoute}/paises`
+
 };

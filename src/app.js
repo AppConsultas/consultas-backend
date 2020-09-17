@@ -1,6 +1,6 @@
 import "dotenv/config";
 import createError from "http-errors";
-import express from "express"
+import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
@@ -10,10 +10,13 @@ import { routes } from "./constants/common";
 import cacheControl from "express-cache-controller";
 
 import indexRouter from "./routes/index";
-import usuariosRouter from "./routes/usuario";
-import doctoresRouter from "./routes/doctor";
-import especialidadesRouter from "./routes/especialidad"
 
+import psicologosRouter from "./routes/psicologo";
+import pacientesRouter from "./routes/paciente";
+import contactanosRouter from "./routes/contactanos";
+import citasRouter from "./routes/cita";
+import authRouter from "./routes/auth";
+import paisesRouter from "./routes/paises";
 const app = express();
 
 app.use(cors());
@@ -39,10 +42,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
-app.use(routes.usuarioRaiz, usuariosRouter);
-app.use(routes.doctorRaiz, doctoresRouter);
-app.use(routes.especialidad, especialidadesRouter);
-
+app.use(routes.psicologoRaiz, psicologosRouter);
+app.use(routes.pacienteRaiz, pacientesRouter);
+app.use(routes.contactanos, contactanosRouter);
+app.use(routes.cita, citasRouter);
+app.use(routes.auth, authRouter);
+app.use(routes.paises,paisesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

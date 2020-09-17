@@ -1,7 +1,7 @@
-import { DataTypes, Sequelize } from "Sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 import { estado } from "../constants/index";
 
-export const DoctorModel = {
+export const PsicologoModel = {
   id: {
     type: DataTypes.UUID,
     primaryKey: true
@@ -10,26 +10,27 @@ export const DoctorModel = {
     type: DataTypes.UUID,
     allowNull: false
   },
-  especialidad: {
-    type: DataTypes.UUID,
-    allowNull: false
-  },
-  rating: {
+  edad: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
+  direccion: {
+    type: Sequelize.STRING(50)
+  },
+  longitud: {
+    type: Sequelize.FLOAT
+  },
+  latitud: {
+    type: Sequelize.FLOAT
+  },
   descripcion: {
-    type: Sequelize.STRING(140),
-    allowNull: false
+    type: Sequelize.STRING(100)
   },
-  usuarioCreacion: {
-    type: DataTypes.UUID,
-    allowNull: false,
-    field: "usuario_creacion"
-  },
-  usuarioActualizacion: {
-    type: DataTypes.UUID,
-    field: "usuario_actualizacion"
+  rating: {
+    type: DataTypes.VIRTUAL,
+    get() {
+      return (Math.random() * 4 + 1).toFixed(1);
+    }
   },
   fecha_creacion: {
     type: Sequelize.DATE,
@@ -41,12 +42,18 @@ export const DoctorModel = {
   estado: {
     type: Sequelize.ENUM(estado.values),
     defaultValue: estado.ACTIVO
+  },
+  pais:{
+    type: Sequelize.STRING(36),
+    allowNull: false
   }
+
+
 };
 
-export const DoctorConfig = {
+export const PsicologoConfig = {
   freezeTableName: true,
-  tableName: "doctor",
+  tableName: "Psicologo",
   timestamps: true,
   createdAt: "fecha_creacion",
   updatedAt: "fecha_actualizacion"

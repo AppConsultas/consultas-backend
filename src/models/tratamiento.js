@@ -1,32 +1,21 @@
 import { DataTypes, Sequelize } from "Sequelize";
-import { estado, tipoDePago } from "../constants/index";
+import { estado } from "../constants/index";
 
-export const Orden = {
+export const TratamientoModel = {
   id: {
     type: DataTypes.UUID,
     primaryKey: true
   },
-  datos_consulta: {
+  psicologo: {
     type: DataTypes.UUID,
     allowNull: false
   },
-  horario: {
-    type: DataTypes.UUID,
+  descripcion: {
+    type: Sequelize.STRING(50),
     allowNull: false
   },
-  tipoPago: {
-    type: Sequelize.ENUM(tipoDePago.values),
-    allowNull: false,
-    field: "tipo_pago"
-  },
-  usuarioCreacion: {
-    type: DataTypes.UUID,
-    allowNull: false,
-    field: "usuario_creacion"
-  },
-  usuarioActualizacion: {
-    type: DataTypes.UUID,
-    field: "usuario_actualizacion"
+  precio: {
+    type: Sequelize.FLOAT
   },
   fecha_creacion: {
     type: Sequelize.DATE,
@@ -41,9 +30,9 @@ export const Orden = {
   }
 };
 
-export const OrdenConfig = {
+export const TratamientoConfig = {
   freezeTableName: true,
-  tableName: "orden",
+  tableName: "Tratamiento",
   timestamps: true,
   createdAt: "fecha_creacion",
   updatedAt: "fecha_actualizacion"

@@ -1,30 +1,28 @@
 import { DataTypes, Sequelize } from "Sequelize";
-import { estado } from "../constants/index"
+import { estado } from "../constants/index";
 
 export const UsuarioModel = {
   id: {
     type: DataTypes.UUID,
     primaryKey: true
   },
-  nombres: {
-    type: Sequelize.STRING(145),
+  nombre: {
+    type: Sequelize.STRING(50),
     allowNull: false
   },
-  apellidos: {
-    type: Sequelize.STRING(45),
+  email: {
+    type: Sequelize.STRING(50),
+    allowNull: false
+  },
+  contrasena: {
+    type: Sequelize.STRING(50),
     allowNull: false
   },
   imagen: {
-    type: Sequelize.STRING(45),
+    type: Sequelize.STRING(500)
   },
-  usuarioCreacion: {
-    type: DataTypes.UUID,
-    allowNull: false,
-    field: "usuario_creacion"
-  },
-  usuarioActualizacion: {
-    type: DataTypes.UUID,
-    field: "usuario_actualizacion"
+  telefono: {
+    type: Sequelize.STRING(10)
   },
   fecha_creacion: {
     type: Sequelize.DATE,
@@ -36,12 +34,12 @@ export const UsuarioModel = {
   estado: {
     type: Sequelize.ENUM(estado.values),
     defaultValue: estado.ACTIVO
-  },
+  }
 };
 
 export const UsuarioConfig = {
   freezeTableName: true,
-  tableName: "usuario",
+  tableName: "Usuario",
   timestamps: true,
   createdAt: "fecha_creacion",
   updatedAt: "fecha_actualizacion"

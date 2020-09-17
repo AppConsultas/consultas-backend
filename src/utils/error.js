@@ -20,3 +20,4 @@ export const errorStatusHandle = (res, payload, other) => {
   const msg = errors[payload] || errors.INTERNAL_SERVER_ERROR;
   return res.status(msg.status).send({ error: { ...msg, ...other } });
 };
+

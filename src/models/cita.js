@@ -1,27 +1,37 @@
 import { DataTypes, Sequelize } from "Sequelize";
-import { estado } from "../constants/index"
+import { estado, estadoCita } from "../constants/index";
 
-export const ResultadoModel = {
+export const CitaModel = {
   id: {
     type: DataTypes.UUID,
     primaryKey: true
   },
-  consulta: {
+  tratamiento: {
+    type: DataTypes.UUID
+  },
+  paciente: {
     type: DataTypes.UUID,
     allowNull: false
   },
-  sugerencia: {
-    type: Sequelize.STRING(500),
+  total: {
+    type: DataTypes.FLOAT,
     allowNull: false
   },
-  usuarioCreacion: {
-    type: DataTypes.UUID,
-    allowNull: false,
-    field: "usuario_creacion"
+  fecha: {
+    type: Sequelize.DATE
   },
-  usuarioActualizacion: {
-    type: DataTypes.UUID,
-    field: "usuario_actualizacion"
+  motivo: {
+    type: DataTypes.STRING
+  },
+  observacion: {
+    type: DataTypes.STRING
+  },
+  resena: {
+    type: DataTypes.STRING
+  },
+  estado_cita: {
+    type: Sequelize.ENUM(estadoCita.values),
+    defaultValue: estadoCita.PENDIENTE
   },
   fecha_creacion: {
     type: Sequelize.DATE,
@@ -33,12 +43,12 @@ export const ResultadoModel = {
   estado: {
     type: Sequelize.ENUM(estado.values),
     defaultValue: estado.ACTIVO
-  },
+  }
 };
 
-export const ResultadoConfig = {
+export const CitaConfig = {
   freezeTableName: true,
-  tableName: "resultado",
+  tableName: "Cita",
   timestamps: true,
   createdAt: "fecha_creacion",
   updatedAt: "fecha_actualizacion"

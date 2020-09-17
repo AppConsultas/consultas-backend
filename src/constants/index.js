@@ -1,9 +1,9 @@
 export const methods = ["GET", "POST", "PUT", "DELETE"];
 
 export const estado = {
-  ACTIVO: "AC",
-  INACTIVO: "IN",
-  values: ["AC", "IN"]
+  ACTIVO: "A",
+  INACTIVO: "I",
+  values: ["A", "I"]
 };
 
 export const estadoConsulta = {
@@ -22,6 +22,13 @@ export const estadoHorario = {
   values: ["D", "R", "C", "T"]
 };
 
+export const estadoCita = {
+  PENDIENTE: "P",
+  APROBADA: "A",
+  CANCELADA: "C",
+  values: ["P", "A", "C"]
+};
+
 export const tipoDePago = {
   TARJETA: "TC",
   TRANSFERENCIA: "T",
@@ -29,12 +36,6 @@ export const tipoDePago = {
   values: ["TC", "T", "D"]
 };
 
-export const atributosExclude = [
-  "usuario_creacion",
-  "usuario_actualizacion",
-  "fecha_creacion",
-  "fecha_actualizacion",
-  "estado"
-];
+export const atributosExclude = ["fecha_creacion", "estado","fecha_actualizacion"];
 
 export const adminDefecto = "30698c95-3245-49c9-b6e3-2326afc85de1";
